@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/mvu-website//_next/:path+",
+        "destination": "/mvu-website/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
