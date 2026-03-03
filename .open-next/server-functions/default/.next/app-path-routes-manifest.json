@@ -1,9 +1,0 @@
-{
-  "/_global-error/page": "/_global-error",
-  "/_not-found/page": "/_not-found",
-  "/api/outstatic/[[...ost]]/route": "/api/outstatic/[[...ost]]",
-  "/api/robokassa/route": "/api/robokassa",
-  "/favicon.ico/route": "/favicon.ico",
-  "/outstatic/[[...ost]]/page": "/outstatic/[[...ost]]",
-  "/page": "/"
-}
