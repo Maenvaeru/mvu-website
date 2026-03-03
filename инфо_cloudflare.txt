@@ -1,0 +1,58 @@
+Cloudflare Pages — это платформа для хостинга JAMstack-приложений, которая позволяет развёртывать статические сайты и проекты на основе фреймворков (Next.js, Astro, Hugo и др.). Развёртывание происходит через интеграцию с Git-репозиториями (GitHub, GitLab) или с помощью CLI-инструмента Wrangler. [```1```](https://tr-page.yandex.ru/translate?lang=en-ru&url=https%3A%2F%2Fwww.geeksforgeeks.org%2Ftechtips%2Fdeploying-static-website-to-cloudflare-pages%2F)[```7```](https://www.geeksforgeeks.org/techtips/deploying-static-website-to-cloudflare-pages/)[```2```](https://vite-docs.ru/guide/static-deploy)[```10```](https://vite.dev/guide/static-deploy)
+
+## Подготовка
+
+**Требования:**
+* учётная запись Cloudflare (если нет — создайте бесплатную);
+* репозиторий в GitHub или GitLab с кодом сайта;
+* для статических сайтов — файл `index.html` в репозитории. [```1```](https://tr-page.yandex.ru/translate?lang=en-ru&url=https%3A%2F%2Fwww.geeksforgeeks.org%2Ftechtips%2Fdeploying-static-website-to-cloudflare-pages%2F)[```7```](https://www.geeksforgeeks.org/techtips/deploying-static-website-to-cloudflare-pages/)
+
+Если вы используете фреймворк (например, Next.js, Astro), убедитесь, что проект настроен корректно и команда сборки (например, `npm run build`) генерирует готовые файлы в определённую папку (часто это `dist` или `public`). [```9```](https://docs.astro.build/ru/guides/deploy/cloudflare/)[```10```](https://vite.dev/guide/static-deploy)
+
+## Развёртывание через панель управления Cloudflare
+
+1. Войдите в панель управления Cloudflare и перейдите в раздел **Workers & Pages**. [```14```](https://github.com/shafeeqahmd/GitHub-Cloudflare-Pages-Integration)
+2. Нажмите **Create a project** (Создать проект), затем выберите **Connect to Git** (Подключить Git). [```14```](https://github.com/shafeeqahmd/GitHub-Cloudflare-Pages-Integration)
+3. Авторизуйте доступ к вашему аккаунту GitHub или GitLab. Можно выбрать все репозитории или только определённые. [```1```](https://tr-page.yandex.ru/translate?lang=en-ru&url=https%3A%2F%2Fwww.geeksforgeeks.org%2Ftechtips%2Fdeploying-static-website-to-cloudflare-pages%2F)[```7```](https://www.geeksforgeeks.org/techtips/deploying-static-website-to-cloudflare-pages/)
+4. Выберите репозиторий, который хотите развернуть, и нажмите **Begin setup** (Начать настройку). [```14```](https://github.com/shafeeqahmd/GitHub-Cloudflare-Pages-Integration)
+5. Настройте параметры сборки:
+   * **Name of the project** — название проекта (оно будет использоваться для субдомена вида `projectname.pages.dev`).
+   * **Production branch** — ветка репозитория, которая будет использоваться для продакшн-версии (обычно `main` или `master`).
+   * **Framework preset** — выберите фреймворк, который вы использовали в проекте (например, Next.js, Astro). Для статического HTML выберите **None**. [```1```](https://tr-page.yandex.ru/translate?lang=en-ru&url=https%3A%2F%2Fwww.geeksforgeeks.org%2Ftechtips%2Fdeploying-static-website-to-cloudflare-pages%2F)[```7```](https://www.geeksforgeeks.org/techtips/deploying-static-website-to-cloudflare-pages/)
+   * **Build command** — команда для сборки сайта. Если выбран **None**, оставьте поле пустым. Для других фреймворков Cloudflare автоматически подставит стандартную команду, но можно указать пользовательскую. [```1```](https://tr-page.yandex.ru/translate?lang=en-ru&url=https%3A%2F%2Fwww.geeksforgeeks.org%2Ftechtips%2Fdeploying-static-website-to-cloudflare-pages%2F)[```7```](https://www.geeksforgeeks.org/techtips/deploying-static-website-to-cloudflare-pages/)
+   * **Build output directory** — папка, где находятся собранные файлы (например, `dist`, `public`). Если выбран **None**, оставьте поле пустым. [```1```](https://tr-page.yandex.ru/translate?lang=en-ru&url=https%3A%2F%2Fwww.geeksforgeeks.org%2Ftechtips%2Fdeploying-static-website-to-cloudflare-pages%2F)[```7```](https://www.geeksforgeeks.org/techtips/deploying-static-website-to-cloudflare-pages/)
+6. Нажмите **Save and Deploy** (Сохранить и развернуть). [```1```](https://tr-page.yandex.ru/translate?lang=en-ru&url=https%3A%2F%2Fwww.geeksforgeeks.org%2Ftechtips%2Fdeploying-static-website-to-cloudflare-pages%2F)[```7```](https://www.geeksforgeeks.org/techtips/deploying-static-website-to-cloudflare-pages/)
+
+Cloudflare соберёт проект и развернёт его. После успешного развёртывания сайт будет доступен по субдомену вида `projectname.pages.dev`. [```14```](https://github.com/shafeeqahmd/GitHub-Cloudflare-Pages-Integration)
+
+## Развёртывание через Wrangler CLI
+
+Wrangler — это CLI-инструмент для работы с проектами Cloudflare. [```11```](https://neon.com/docs/guides/cloudflare-pages)
+
+1. Установите Wrangler:
+   ```bash
+   npm install -g wrangler
+   ```
+2. Авторизуйтесь в Cloudflare через Wrangler:
+   ```bash
+   wrangler login
+   ```
+3. Соберите проект (например, выполните `npm run build`).
+4. Разверните проект:
+   ```bash
+   npx wrangler pages deploy dist --project-name <NAME_OF_YOUR_PROJECT>
+   ```
+   Замените `dist` на папку с собранными файлами, а `<NAME_OF_YOUR_PROJECT>` — на уникальное имя проекта. [```11```](https://neon.com/docs/guides/cloudflare-pages)
+
+После загрузки активов Wrangler предоставит URL для предварительного просмотра сайта. [```10```](https://vite.dev/guide/static-deploy)
+
+## Дополнительные возможности
+
+* **Пользовательские домены.** После развёртывания можно добавить собственный домен через настройки проекта в Cloudflare Pages. Для этого потребуется обновить DNS-записи у регистратора домена и добавить CNAME-запись, указывающую на субдомен Cloudflare Pages. [```14```](https://github.com/shafeeqahmd/GitHub-Cloudflare-Pages-Integration)
+* **Предварительные развёртывания.** При создании pull request в GitHub Cloudflare Pages автоматически создаёт предварительный URL для просмотра изменений. [```13```](https://cloudflare-docs.justalittlebyte.ovh/pages/configuration/git-integration/github-integration/)
+* **Переменные окружения.** В настройках проекта в Cloudflare можно добавить переменные окружения, которые будут доступны при сборке и работе приложения. [```11```](https://neon.com/docs/guides/cloudflare-pages)
+* **Контроль веток.** Можно настроить, какие ветки будут автоматически развёртываться, а какие — нет. Для этого в настройках проекта перейдите в **Build > Branch control**. [```13```](https://cloudflare-docs.justalittlebyte.ovh/pages/configuration/git-integration/github-integration/)[```15```](https://developers.cloudflare.com/pages/configuration/git-integration/)
+
+Если при сборке возникают ошибки, проверьте логи в панели управления Cloudflare Pages. Также убедитесь, что указаны корректные команда сборки и папка с выходными файлами. [```14```](https://github.com/shafeeqahmd/GitHub-Cloudflare-Pages-Integration)
+
+Для конкретных фреймворков (например, Astro, Next.js) могут быть дополнительные требования к настройке. В документации Cloudflare есть гайды для разных фреймворков. [```9```](https://docs.astro.build/ru/guides/deploy/cloudflare/)

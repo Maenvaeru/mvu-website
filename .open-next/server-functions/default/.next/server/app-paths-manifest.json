@@ -1,0 +1,9 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/outstatic/[[...ost]]/route": "app/api/outstatic/[[...ost]]/route.js",
+  "/api/robokassa/route": "app/api/robokassa/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/outstatic/[[...ost]]/page": "app/outstatic/[[...ost]]/page.js",
+  "/page": "app/page.js"
+}
