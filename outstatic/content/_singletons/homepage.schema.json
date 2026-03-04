@@ -3,12 +3,14 @@
     "type": "object",
     "properties": {
         "heroTitle": {
-            "type": "string",
-            "title": "Hero Title"
+            "title": "Hero Title",
+            "fieldType": "String",
+            "dataType": "string"
         },
         "heroSubtitle": {
-            "type": "string",
-            "title": "Hero Subtitle"
+            "title": "Hero Subtitle",
+            "fieldType": "Text",
+            "dataType": "string"
         }
     }
 }

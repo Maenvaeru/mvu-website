@@ -3,17 +3,19 @@
     "type": "object",
     "properties": {
         "date": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Date"
+            "title": "Date",
+            "fieldType": "Date",
+            "dataType": "date"
         },
         "description": {
-            "type": "string",
-            "title": "Description"
+            "title": "Description",
+            "fieldType": "Text",
+            "dataType": "string"
         },
         "coverImage": {
-            "type": "string",
-            "title": "Cover Image"
+            "title": "Cover Image",
+            "fieldType": "Image",
+            "dataType": "image"
         }
     }
 }
