@@ -1,0 +1,18 @@
+{
+    "metadata": [
+        {
+            "title": "Первая новость",
+            "status": "published",
+            "publishedAt": "2026-03-04T00:00:00.000Z",
+            "slug": "hello-world",
+            "collection": "posts",
+            "author": {
+                "name": "Admin",
+                "picture": "https://avatars.githubusercontent.com/u/1234567?v=4"
+            },
+            "__outstatic": {
+                "path": "outstatic/content/posts/hello-world.md"
+            }
+        }
+    ]
+}
