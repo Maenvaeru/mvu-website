@@ -13,6 +13,78 @@
             "__outstatic": {
                 "path": "outstatic/content/posts/hello-world.md"
             }
+        },
+        {
+            "title": "Release MVU-Comfy-Desktop v2.2",
+            "status": "published",
+            "publishedAt": "2026-03-04T12:00:00.000Z",
+            "description": "We've just updated our most massive project with new core logic and faster extraction pipelines. Find out what's new.",
+            "slug": "release-mvu-comfy-desktop-v2-2",
+            "collection": "posts",
+            "author": {
+                "name": "MaenVaerU",
+                "picture": "https://avatars.githubusercontent.com/u/1"
+            },
+            "__outstatic": {
+                "path": "outstatic/content/posts/release-mvu-comfy-desktop-v2-2.md"
+            }
+        },
+        {
+            "title": "Главная страница",
+            "status": "published",
+            "publishedAt": "2026-03-04T12:00:00.000Z",
+            "description": "Homepage dynamic content",
+            "slug": "home",
+            "collection": "pages",
+            "author": {
+                "name": "MaenVaerU",
+                "picture": "https://avatars.githubusercontent.com/u/1"
+            },
+            "__outstatic": {
+                "path": "outstatic/content/pages/home.md"
+            }
+        },
+        {
+            "title": "Публичная Оферта",
+            "status": "published",
+            "publishedAt": "2026-03-04T12:00:00.000Z",
+            "slug": "offer",
+            "collection": "legal",
+            "author": {
+                "name": "MaenVaerU",
+                "picture": "https://avatars.githubusercontent.com/u/1"
+            },
+            "__outstatic": {
+                "path": "outstatic/content/legal/offer.md"
+            }
+        },
+        {
+            "title": "Реквизиты и Контакты",
+            "status": "published",
+            "publishedAt": "2026-03-04T12:00:00.000Z",
+            "slug": "contacts",
+            "collection": "legal",
+            "author": {
+                "name": "MaenVaerU",
+                "picture": "https://avatars.githubusercontent.com/u/1"
+            },
+            "__outstatic": {
+                "path": "outstatic/content/legal/contacts.md"
+            }
+        },
+        {
+            "title": "Политика возврата",
+            "status": "published",
+            "publishedAt": "2026-03-04T12:00:00.000Z",
+            "slug": "return-policy",
+            "collection": "legal",
+            "author": {
+                "name": "MaenVaerU",
+                "picture": "https://avatars.githubusercontent.com/u/1"
+            },
+            "__outstatic": {
+                "path": "outstatic/content/legal/return-policy.md"
+            }
         }
     ]
 }

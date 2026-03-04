@@ -4,5 +4,17 @@
     "slug": "posts",
     "path": "outstatic/content/posts",
     "children": []
+  },
+  {
+    "title": "Pages",
+    "slug": "pages",
+    "path": "outstatic/content/pages",
+    "children": []
+  },
+  {
+    "title": "Legal",
+    "slug": "legal",
+    "path": "outstatic/content/legal",
+    "children": []
   }
 ]
