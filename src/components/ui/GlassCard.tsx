@@ -18,7 +18,7 @@ export function GlassCard({ children, className, hoverEffect = true, ...props }:
             )}
             {...(props as any)}
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             {children as React.ReactNode}
         </motion.div>
     );

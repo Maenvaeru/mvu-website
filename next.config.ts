@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: isProd ? 'export' : undefined,
+  basePath: isProd ? '/mvu-website' : '',
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -11,6 +14,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  transpilePackages: ['outstatic', 'next-navigation-guard'],
 };
 
 export default nextConfig;

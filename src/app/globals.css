@@ -1,45 +1,90 @@
 @import "tailwindcss";
+@plugin "../../node_modules/@tailwindcss/typography";
+@source "../../node_modules/outstatic";
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
   --color-brand: var(--brand);
   --color-brand-hover: var(--brand-hover);
   --color-purple: var(--purple);
   --color-gold: var(--gold);
   --color-softgray: var(--softgray);
+  --color-cyan: var(--cyan);
+  --color-orange: var(--orange);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  --background: #1e1e1e;
-  --foreground: #f3f4f6;
+  --background: #fafafa;
+  --foreground: #1c1c21;
+  --muted: #666666;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.15);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+
   --brand: #EAB308;
   --brand-hover: #FDE047;
   --purple: #8A2BE2;
   --gold: #EAB308;
-  --softgray: #2d2d2d;
+  --softgray: #e5e7eb;
+  --cyan: #00efff;
+  --orange: #ff6600;
+
+  --color-glow-purple: rgba(138, 43, 226, 0.4);
+  --color-glow-gold: rgba(234, 179, 8, 0.4);
+  --color-glow-orange: rgba(255, 102, 0, 0.4);
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f3f4f6;
+  --muted: #9ca3af;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+  --softgray: #1a1a1a;
+
+  --color-glow-purple: rgba(138, 43, 226, 0.6);
+  --color-glow-gold: rgba(234, 179, 8, 0.6);
+  --color-glow-orange: rgba(255, 102, 0, 0.6);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer utilities {
   .glass {
-    @apply backdrop-blur-md bg-white/5 border border-white/10;
+    @apply backdrop-blur-md bg-glass-bg border border-glass-border;
+    box-shadow: var(--glass-shadow);
   }
 
   .glass-card {
-    @apply backdrop-blur-md bg-white/5 border border-white/10 rounded-xl;
+    @apply backdrop-blur-md bg-glass-bg border border-glass-border rounded-xl;
+    box-shadow: var(--glass-shadow);
   }
 
   .animate-in {
     animation: fadeIn 0.3s ease-out, slideUp 0.3s ease-out;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
   }
 }
 

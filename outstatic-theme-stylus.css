@@ -1,0 +1,167 @@
+/* ==UserStyle==
+@name         Outstatic CMS Lux Theme
+@namespace    github.com/openstyles/stylus
+@version      1.0.0
+@description  A professional luxury soft dark grey theme for Outstatic CMS
+@author       Antigravity
+@match        http://localhost:3000/outstatic*
+@match        *://localhost:3000/outstatic*
+@match        *://*.pages.dev/outstatic*
+==/UserStyle== */
+
+/* Outstatic CMS Custom Theme for Stylus */
+/* Lux Professional Admin Theme: Soft Dark Grey with White Text and subtle animations */
+
+/* 1. Global CSS Variables (Shadcn/Tailwind overrides) */
+:root,
+.dark {
+    /* Soft ash grey background */
+    --background: 240 5% 15% !important;
+    /* Pure white text */
+    --foreground: 0 0% 98% !important;
+
+    /* Slightly lighter grey for cards and sidebars */
+    --card: 240 5% 18% !important;
+    --card-foreground: 0 0% 98% !important;
+    --popover: 240 5% 18% !important;
+    --popover-foreground: 0 0% 98% !important;
+
+    /* Muted elements */
+    --muted: 240 5% 22% !important;
+    --muted-foreground: 240 5% 65% !important;
+
+    /* Primary accents (Soft luxurious blue/silver) */
+    --primary: 215 25% 65% !important;
+    --primary-foreground: 222.2 47.4% 11.2% !important;
+
+    /* Borders and Inputs */
+    --border: 240 5% 25% !important;
+    --input: 240 5% 25% !important;
+    --ring: 215 25% 65% !important;
+
+    /* Radius */
+    --radius: 0.75rem !important;
+}
+
+/* 2. Direct Element Overrides for guaranteed Stylus apply */
+body,
+main,
+[data-outstatic] {
+    background-color: #202022 !important;
+    color: #fafafe !important;
+    transition: background-color 0.4s ease, color 0.4s ease !important;
+}
+
+/* Sidebar & Navigation styling */
+aside {
+    background: rgba(40, 40, 42, 0.6) !important;
+    backdrop-filter: blur(12px) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+nav,
+header,
+[data-slot="header"] {
+    background: rgba(28, 28, 30, 0.8) !important;
+    backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Cards, Wrappers and Containers */
+div[data-slot="card"],
+.bg-card {
+    background-color: rgba(45, 45, 48, 0.4) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease !important;
+}
+
+div[data-slot="card"]:hover {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Inputs, Selects, Textareas form fields */
+input,
+select,
+textarea,
+[data-slot="input"] {
+    background-color: rgba(25, 25, 27, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+input:focus-visible,
+textarea:focus-visible {
+    border-color: rgba(200, 205, 215, 0.5) !important;
+    box-shadow: 0 0 0 3px rgba(200, 205, 215, 0.15) !important;
+    outline: none !important;
+}
+
+/* Buttons */
+button,
+a[role="button"],
+[data-slot="button"] {
+    border-radius: 8px !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-weight: 500 !important;
+}
+
+/* Primary buttons hover */
+button.bg-primary:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 15px rgba(160, 170, 180, 0.2) !important;
+    filter: brightness(1.1) !important;
+}
+
+/* Editor specific (if prose classes are used) */
+.prose,
+.prose-invert,
+.tiptap {
+    color: #e5e5e7 !important;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.prose a {
+    color: #a3badf !important;
+    text-decoration-color: rgba(163, 186, 223, 0.4) !important;
+    text-underline-offset: 4px !important;
+    transition: all 0.3s ease !important;
+}
+
+.prose a:hover {
+    text-decoration-color: #a3badf !important;
+}
+
+/* Labels and Small Text */
+label,
+.text-muted-foreground,
+.text-sm {
+    color: #a1a1aa !important;
+}
+
+/* Data Tables */
+table,
+tr,
+td,
+th {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}

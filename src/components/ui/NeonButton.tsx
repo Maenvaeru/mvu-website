@@ -5,19 +5,21 @@ import { motion } from "framer-motion";
 import React from "react";
 
 interface NeonButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "purple" | "gold" | "softgray";
+    variant?: "purple" | "gold" | "softgray" | "orange";
 }
 
 export function NeonButton({ children, className, variant = "purple", ...props }: NeonButtonProps) {
     const getColors = () => {
         switch (variant) {
             case "gold":
-                return "border-gold text-gold hover:bg-gold/10 shadow-[0_0_15px_rgba(234,179,8,0.3)] hover:shadow-[0_0_25px_rgba(234,179,8,0.6)]";
+                return "border-gold text-gold hover:bg-gold/10 shadow-[0_0_15px_var(--color-glow-gold)] hover:shadow-[0_0_25px_var(--color-glow-gold)]";
+            case "orange":
+                return "border-[#ff6600] text-[#ff6600] hover:bg-[#ff6600]/10 shadow-[0_0_15px_var(--color-glow-orange)] hover:shadow-[0_0_25px_var(--color-glow-orange)]";
             case "softgray":
-                return "border-gray-400 text-gray-300 hover:bg-white/10 shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]";
+                return "border-gray-400 text-muted hover:bg-glass-bg shadow-[0_0_15px_var(--color-glass-border)] hover:shadow-[0_0_25px_var(--color-glass-border)]";
             case "purple":
             default:
-                return "border-purple text-purple hover:bg-purple/10 shadow-[0_0_15px_rgba(138,43,226,0.3)] hover:shadow-[0_0_25px_rgba(138,43,226,0.6)]";
+                return "border-purple text-purple hover:bg-purple/10 shadow-[0_0_15px_var(--color-glow-purple)] hover:shadow-[0_0_25px_var(--color-glow-purple)]";
         }
     };
 
