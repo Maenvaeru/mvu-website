@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Zap, Sparkles, ArrowRight } from "lucide-react";
+import { Zap, Sparkles, ArrowRight, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn, getAssetPath } from "@/lib/utils";
 
@@ -221,7 +221,7 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
                                                 {lang === 'ru' ? (block.data?.s2DescRu || content.service2Desc) : (block.data?.s2DescEn || content.service2Desc)}
                                             </p>
                                             <div className="text-xl md:text-2xl font-bold text-foreground mb-4">{lang === 'ru' ? (block.data?.s2PriceRu || content.service2Price) : (block.data?.s2PriceEn || content.service2Price)}</div>
-                                            <NeonButton variant="gold" className="w-full text-sm font-bold text-black">{content.order}</NeonButton>
+                                            <NeonButton variant="gold" className="w-full text-sm font-bold">{content.order}</NeonButton>
                                         </div>
                                     </GlassCard>
 
@@ -257,17 +257,34 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {posts.slice(0, 3).map((post) => (
-                                        <GlassCard key={post.slug} className="flex flex-col h-full">
-                                            <h3 className="text-xl font-bold mb-2">{post.title}</h3>
-                                            <p className="text-xs text-muted mb-4 border-b border-glass-border pb-2 border-opacity-50">
-                                                {new Date(post.date || post.publishedAt).toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                            </p>
-                                            <p className="text-muted mb-6 text-sm flex-1">
-                                                {post.description}
-                                            </p>
-                                            <Link href={`/news/${post.slug}`}>
-                                                <NeonButton variant="softgray" className="w-full text-sm">{content.readMore}</NeonButton>
-                                            </Link>
+                                        <GlassCard key={post.slug} className="flex flex-col h-full p-0 overflow-hidden group hover:border-purple/40 transition-all transition-duration-300">
+                                            {post.coverImage && (
+                                                <div className="relative w-full h-48 overflow-hidden">
+                                                    <Image
+                                                        src={getAssetPath(post.coverImage)}
+                                                        alt={post.title}
+                                                        fill
+                                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                    />
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-60" />
+                                                </div>
+                                            )}
+                                            <div className="p-6 flex flex-col flex-1">
+                                                <div className="flex items-center gap-2 mb-3">
+                                                    <Calendar size={14} className="text-purple" />
+                                                    <span className="text-[10px] uppercase font-bold tracking-wider text-muted">
+                                                        {new Date(post.publishedAt || post.date || Date.now()).toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                                    </span>
+                                                </div>
+                                                <h3 className="text-lg font-bold mb-3 group-hover:text-purple transition-colors line-clamp-2">{post.title}</h3>
+                                                <p className="text-muted mb-6 text-sm flex-1 line-clamp-3">
+                                                    {post.description}
+                                                </p>
+                                                <Link href={`/news/${post.slug}`} className="text-xs font-bold text-white hover:text-purple transition-colors flex items-center gap-2 group/link">
+                                                    {content.newsLink}
+                                                    <ArrowRight className="w-3 h-3 group-hover/link:translate-x-1 transition-transform" />
+                                                </Link>
+                                            </div>
                                         </GlassCard>
                                     ))}
                                 </div>
@@ -371,16 +388,16 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
 
                                                 <div className="space-y-2 mb-6 flex-1">
                                                     {(lang === 'ru' ? block.data?.[`t${tier.id}FeaturesRu`] : block.data?.[`t${tier.id}FeaturesEn`])?.split('\n').filter(Boolean).map((f: string, idx: number) => (
-                                                        <div key={idx} className="flex items-center gap-2 text-xs text-muted">
-                                                            <div className="w-1 h-1 rounded-full bg-purple/50" />
-                                                            {f}
+                                                        <div key={idx} className="flex items-start gap-2 text-xs text-muted leading-relaxed">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-purple/50 mt-1 shrink-0" />
+                                                            <span className="flex-1">{f}</span>
                                                         </div>
                                                     ))}
                                                 </div>
 
                                                 <NeonButton
                                                     variant={tier.id === 4 ? "orange" : tier.id === 1 ? "softgray" : tier.id === 2 ? "purple" : "gold"}
-                                                    className={cn("w-full mt-auto", tier.id === 3 && "text-black font-bold")}
+                                                    className={cn("w-full mt-auto", tier.id === 3 && "font-bold")}
                                                 >
                                                     {content.subscribeAction}
                                                 </NeonButton>
