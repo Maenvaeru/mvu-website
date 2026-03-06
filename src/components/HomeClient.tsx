@@ -139,6 +139,13 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
         return content.heroTitle;
     };
 
+    const renderTitle = (customTitle: any, defaultTitle: any) => {
+        if (customTitle && typeof customTitle === 'string') {
+            return <span dangerouslySetInnerHTML={{ __html: customTitle }} />;
+        }
+        return defaultTitle;
+    };
+
     return (
         <div className="flex flex-col items-center w-full">
             {blocks.map((block: any) => {
@@ -185,7 +192,9 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
                         return (
                             <section key={block.id} id="services" className="w-full py-16 md:py-24 px-4 container mx-auto">
                                 <div className="flex flex-col mb-12">
-                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">{lang === 'ru' ? (block.data?.titleRu || content.servicesTitle) : (block.data?.titleEn || content.servicesTitle)}</h2>
+                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                                        {lang === 'ru' ? renderTitle(block.data?.titleRu, content.servicesTitle) : renderTitle(block.data?.titleEn, content.servicesTitle)}
+                                    </h2>
                                     <div className="w-20 h-1 bg-gold rounded" />
                                 </div>
 
@@ -235,7 +244,9 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
                                 <div className="flex flex-col mb-12 items-start">
                                     <div className="flex justify-between w-full items-end">
                                         <div>
-                                            <h2 className="text-2xl md:text-3xl font-bold mb-2">{content.newsTitle}</h2>
+                                            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                                                {renderTitle(block.data?.titleRu || block.data?.titleEn, content.newsTitle)}
+                                            </h2>
                                             <div className="w-20 h-1 bg-purple rounded" />
                                         </div>
                                         <Link href="/news" className="text-muted hover:text-purple transition-colors flex items-center gap-1 text-sm font-medium">
@@ -267,7 +278,9 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
                         return (
                             <section key={block.id} id="workflows" className="w-full py-16 md:py-24 px-4 container mx-auto bg-glass-bg border-y border-glass-border">
                                 <div className="flex flex-col mb-12 items-end text-right">
-                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">{content.workflowTitle}</h2>
+                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                                        {lang === 'ru' ? renderTitle(block.data?.titleRu, content.workflowTitle) : renderTitle(block.data?.titleEn, content.workflowTitle)}
+                                    </h2>
                                     <div className="w-20 h-1 bg-purple rounded" />
                                     <p className="text-muted max-w-xl mt-4">{lang === 'ru' ? (block.data?.descRu || content.workflowDesc) : (block.data?.descEn || content.workflowDesc)}</p>
                                 </div>
@@ -324,7 +337,9 @@ export function HomeClient({ homepage, posts }: { homepage: any, posts: any[] })
                         return (
                             <section key={block.id} id="subscriptions" className="w-full py-16 md:py-24 px-4 container mx-auto">
                                 <div className="flex flex-col mb-12 items-center text-center">
-                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">{lang === 'ru' ? (block.data?.titleRu || content.tierTitle) : (block.data?.titleEn || content.tierTitle)}</h2>
+                                    <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                                        {lang === 'ru' ? renderTitle(block.data?.titleRu, content.tierTitle) : renderTitle(block.data?.titleEn, content.tierTitle)}
+                                    </h2>
                                     <div className="w-20 h-1 bg-purple rounded mb-4" />
                                     <p className="text-muted max-w-xl">
                                         {lang === 'ru' ? (block.data?.descRu || content.tierDesc) : (block.data?.descEn || content.tierDesc)}
